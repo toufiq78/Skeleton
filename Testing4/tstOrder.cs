@@ -1,6 +1,7 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Net.NetworkInformation;
 
 namespace Testing4
 {
@@ -16,20 +17,22 @@ namespace Testing4
             Found = AnOrder.Find(OrderId);
             Assert.IsTrue(Found);
         }
+
         [TestMethod]
         public void TestDateFound()
         {
-            clsOrder AnOrder =new clsOrder();
+            clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean Ok = true;
             Int32 OrderId = 1;
-            Found = AnOrder .Find(OrderId);
-            if(AnOrder.Date != Convert.ToDateTime("12/12/2009"))
+            Found = AnOrder.Find(OrderId);
+            if (AnOrder.Date != Convert.ToDateTime("12/12/2009"))
             {
                 Ok = false;
             }
             Assert.IsTrue(Ok);
         }
+        
         [TestMethod]
         public void TestOrderIdFound()
         {
@@ -44,6 +47,7 @@ namespace Testing4
             }
             Assert.IsTrue(Ok);
         }
+        
         [TestMethod]
         public void TestOrderNameFound()
             {
@@ -58,6 +62,7 @@ namespace Testing4
                 }
                 Assert.IsTrue(Ok);
             }
+        
             [TestMethod]
             public void TestOrderQuantityFound()
             {
@@ -114,6 +119,7 @@ namespace Testing4
             }
             Assert.IsTrue(Ok);
         }
+        
             [TestMethod]
         public void InstanceOK()
         {
@@ -198,6 +204,5 @@ namespace Testing4
 
             Assert.AreEqual(AnOrder.PaymentMethod, TestData);
         }
-
     }
 }
