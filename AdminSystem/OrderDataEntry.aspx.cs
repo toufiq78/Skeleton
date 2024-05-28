@@ -16,7 +16,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOk_Click(object sender, EventArgs e)
     {
         clsOrder AnOrder = new clsOrder();
-        AnOrder.Price = (float)Convert.ToDouble(txtPrice.Text);
+        AnOrder.Price = Convert.ToInt32(txtPrice.Text);
         AnOrder.OrderId = Convert.ToInt32(txtOrderId.Text);
         AnOrder.OrderName = (txtOrderName.Text);
         AnOrder.OrderQuantity = Convert.ToInt32(txtOrderQuantity.Text);

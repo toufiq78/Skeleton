@@ -8,6 +8,113 @@ namespace Testing4
     public class tstOrder
     {
         [TestMethod]
+        public void FindMethod()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Int32 OrderId = 1;
+            Found = AnOrder.Find(OrderId);
+            Assert.IsTrue(Found);
+        }
+        [TestMethod]
+        public void TestDateFound()
+        {
+            clsOrder AnOrder =new clsOrder();
+            Boolean Found = false;
+            Boolean Ok = true;
+            Int32 OrderId = 1;
+            Found = AnOrder .Find(OrderId);
+            if(AnOrder.Date != Convert.ToDateTime("12/12/2009"))
+            {
+                Ok = false;
+            }
+            Assert.IsTrue(Ok);
+        }
+        [TestMethod]
+        public void TestOrderIdFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean Ok = true;
+            Int32 OrderId = 1;
+            Found = AnOrder.Find(OrderId);
+            if (AnOrder.OrderId != 1)
+            {
+                Ok = false;
+            }
+            Assert.IsTrue(Ok);
+        }
+        [TestMethod]
+        public void TestOrderNameFound()
+            {
+                clsOrder AnOrder = new clsOrder();
+                Boolean Found = false;
+                Boolean Ok = true;
+                Int32 OrderId = 1;
+                Found = AnOrder.Find(OrderId);
+                if (AnOrder.OrderName != "Shoes")
+                {
+                    Ok = false;
+                }
+                Assert.IsTrue(Ok);
+            }
+            [TestMethod]
+            public void TestOrderQuantityFound()
+            {
+                clsOrder AnOrder = new clsOrder();
+                Boolean Found = false;
+                Boolean Ok = true;
+                Int32 OrderId = 1;
+                Found = AnOrder.Find(OrderId);
+                if (AnOrder.OrderQuantity != 1)
+                {
+                    Ok = false;
+                }
+                Assert.IsTrue(Ok);
+            }
+        [TestMethod]
+        public void TestPriceFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean found = false;
+            Boolean Ok = true;
+            Int32 OrderId = 1;
+            found = AnOrder.Find(OrderId);
+            if (AnOrder.Price != 40)
+            {
+                Ok = false;
+            }
+            Assert.IsTrue(Ok);
+        }
+        [TestMethod]
+        public void TestPymentMethodFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean found = false;
+            Boolean Ok = true;
+            Int32 OrderId = 1;
+            found = AnOrder.Find(OrderId);
+            if (AnOrder.PaymentMethod != "card")
+            {
+                Ok = false;
+            }
+            Assert.IsTrue(Ok);
+        }
+        [TestMethod]
+        public void TestStatusFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean found = false;
+            Boolean Ok = true;
+            Int32 OrderId = 1;
+            found = AnOrder.Find(OrderId);
+            if (AnOrder.Status != true)
+            {
+                Ok = false;
+            }
+            Assert.IsTrue(Ok);
+        }
+            [TestMethod]
         public void InstanceOK()
         {
             clsOrder AnOrder = new clsOrder();
