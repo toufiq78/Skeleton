@@ -114,5 +114,59 @@ namespace ClassLibrary
             }
         }
 
+        public string Valid(string ordername, string date, string price, string orderquantity, string paymentmethod)
+        {
+            String Error = "";
+            DateTime DateTemp;
+            if (ordername.Length == 0)
+            {
+                Error = Error + "The order name may not be blank : ";
+            }
+            if (ordername.Length > 6) 
+            {
+                Error = Error + "The order name must be less then 6 charecter : ";
+            }
+            if (price.Length == 0)
+            {
+                Error = Error + "The price may not be blank : ";
+            }
+            if (price.Length > 6)
+            {
+                Error = Error + "The price must be less then 6 charecter : ";
+            }
+            if (orderquantity.Length == 0)
+            {
+                Error = Error + "The order quantity may not be blank : ";
+            }
+            if (orderquantity.Length > 6)
+            {
+                Error = Error + "The order quantity must be less then 6 charecter : ";
+            }
+            if (paymentmethod.Length == 0)
+            {
+                Error = Error + "The payment method may not be blank : ";
+            }
+            if (paymentmethod.Length > 6)
+            {
+                Error = Error + "The payment method must be less then 6 charecter : ";
+            }
+            try
+            {
+                DateTemp = Convert.ToDateTime(Date);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date can not be in the past : ";
+                }
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date can not be in the future : ";
+                }
+            }
+            catch 
+            {
+                Error = Error + "The date was not a valid date : ";
+            }
+            return Error;
+        }
     }
 }
