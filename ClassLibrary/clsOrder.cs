@@ -114,7 +114,7 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string ordername, string date, string price, string orderquantity, string paymentmethod)
+        public string Valid(string ordername, string Date, string price, string orderquantity, string paymentmethod)
         {
             String Error = "";
             DateTime DateTemp;
@@ -157,7 +157,7 @@ namespace ClassLibrary
                 {
                     Error = Error + "The date can not be in the past : ";
                 }
-                if (DateTemp < DateTime.Now.Date)
+                if (DateTemp > DateTime.Now.Date)
                 {
                     Error = Error + "The date can not be in the future : ";
                 }

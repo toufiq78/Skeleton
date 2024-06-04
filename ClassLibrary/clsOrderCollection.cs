@@ -29,7 +29,7 @@ namespace ClassLibrary
             TestItem.OrderId = 1;
             TestItem.OrderName = "Shoes";
             TestItem.Price = 40;
-            TestItem.Date = DateTime.Now;
+            TestItem.Date = DateTime.Now.Date;
             TestItem.OrderQuantity = 1;
             TestItem.PaymentMethod = "card";
             mOrderlist.Add(TestItem);
@@ -38,7 +38,7 @@ namespace ClassLibrary
             TestItem.OrderId = 2;
             TestItem.OrderName = "pant";
             TestItem.Price = 26;
-            TestItem.Date = DateTime.Now;
+            TestItem.Date = DateTime.Now.Date;
             TestItem.OrderQuantity = 3;
             TestItem.PaymentMethod = "cash";
             mOrderlist.Add(TestItem);
@@ -50,7 +50,7 @@ namespace ClassLibrary
         }
 
         List<clsOrder> mOrderlist = new List<clsOrder>();
-       
+        clsOrder mThisOrder = new clsOrder();
 
         public List<clsOrder> OrderList
         {
@@ -74,7 +74,28 @@ namespace ClassLibrary
 
             }
         }
-        public clsOrder ThisOrder { get; set; }
+        public clsOrder ThisOrder
+        {
+            get
+            {
+                return mThisOrder;
+            }
+            set
+            {
+                mThisOrder = value;
+            }
+        }
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderName", mThisOrder.OrderName);
+            DB.AddParameter("@Price", mThisOrder.Price);
+            DB.AddParameter("@Date", mThisOrder.Date);
+            DB.AddParameter("@OrderQuantity", mThisOrder.OrderQuantity);
+            DB.AddParameter("@PaymentMethod", mThisOrder.PaymentMethod);
+            DB.AddParameter("@Status", mThisOrder.Status);
+            return DB.Execute("sproc_tblOrder_Insert");
+        }
         
     }
 }

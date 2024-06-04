@@ -32,8 +32,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnOrder.Price = Convert.ToInt32(Price);
             AnOrder.OrderQuantity = Convert.ToInt32(OrderQuantity);
             AnOrder.PaymentMethod = PaymentMethod;
-            Session["AnOrder"] = AnOrder;
-            Response.Redirect("OrderViewer.aspx");
+            AnOrder.Status = chkStatus.Checked;
+            clsOrderCollection OrderList = new clsOrderCollection();
+            OrderList.ThisOrder = AnOrder;
+            OrderList.Add();
+            Response.Redirect("OrderList.aspx");
         }
         else
         {

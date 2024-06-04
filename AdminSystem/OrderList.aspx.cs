@@ -24,4 +24,10 @@ public partial class OrderList : System.Web.UI.Page
         lstOrderbox.DataTextField = "OrderName";
         lstOrderbox.DataBind();
     }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Session["OrderId"] = -1;
+        Response.Redirect("OrderDataEntry.aspx");
+    }
 }
