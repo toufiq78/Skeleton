@@ -6,22 +6,22 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ClassLibrary;
 
-public partial class _1_List : System.Web.UI.Page
+public partial class OrderList : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (IsPostBack == true)
+        if (IsPostBack == false)
         {
-            DisplayOrder();
+            DisplayOrders();
         }
     }
 
-    void DisplayOrder()
+    void DisplayOrders()
     {
-        clsOrderCollection Order = new clsOrderCollection();
-        lstOrderList.DataSource = Order.OrderList;
-        lstOrderList.DataValueField = "OrderID";
-        lstOrderList.DataTextField = "OrderName";
-        lstOrderList.DataBind();
+        clsOrderCollection Orders = new clsOrderCollection();
+        lstOrderbox.DataSource = Orders.OrderList;
+        lstOrderbox.DataValueField = "OrderId";
+        lstOrderbox.DataTextField = "OrderName";
+        lstOrderbox.DataBind();
     }
 }
