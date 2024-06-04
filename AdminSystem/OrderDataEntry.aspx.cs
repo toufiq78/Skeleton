@@ -16,15 +16,29 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOk_Click(object sender, EventArgs e)
     {
         clsOrder AnOrder = new clsOrder();
-        AnOrder.Price = Convert.ToInt32(txtPrice.Text);
-        AnOrder.OrderId = Convert.ToInt32(txtOrderId.Text);
-        AnOrder.OrderName = (txtOrderName.Text);
-        AnOrder.OrderQuantity = Convert.ToInt32(txtOrderQuantity.Text);
-        AnOrder.Date = DateTime.Now;
-        AnOrder.PaymentMethod = (txtPaymentMethod.Text);
-        AnOrder.Status = chkStatus.Checked;
-        Session["AnOrder"] = AnOrder;
-        Response.Redirect("OrderViewer.aspx");
+        string Price = txtPrice.Text;
+        string OrderId = txtOrderId.Text;
+        string OrderName = txtOrderName.Text;
+        string OrderQuantity = txtOrderQuantity.Text;
+        string Date = txtDate.Text;
+        string PaymentMethod = txtPaymentMethod.Text;
+        string Status = chkStatus.Text;
+        string Error = "";
+        Error = AnOrder.Valid(OrderName, Date, Price, OrderQuantity, PaymentMethod);
+        if (Error == "")
+        {
+            AnOrder.OrderName = OrderName;
+            AnOrder.Date = Convert.ToDateTime(Date);
+            AnOrder.Price = Convert.ToInt32(Price);
+            AnOrder.OrderQuantity = Convert.ToInt32(OrderQuantity);
+            AnOrder.PaymentMethod = PaymentMethod;
+            Session["AnOrder"] = AnOrder;
+            Response.Redirect("OrderViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
 
     }
 
