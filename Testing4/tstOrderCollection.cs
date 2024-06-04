@@ -76,6 +76,7 @@ namespace Testing4
         {
             clsOrderCollection AllOrder = new clsOrderCollection();
             Assert.AreEqual(AllOrder.Count, AllOrder.Count);
+
         }
     }
    
