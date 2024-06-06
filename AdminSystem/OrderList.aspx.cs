@@ -49,4 +49,19 @@ public partial class OrderList : System.Web.UI.Page
             lblError.Text = "Please select a record from the list to edit"; 
         }
     }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        Int32 OrderId;
+        if (lstOrderbox.SelectedIndex != -1)
+        {
+            OrderId = Convert.ToInt32(lstOrderbox.SelectedValue);
+            Session["OrderId"] = OrderId;
+            Response.Redirect("OrderConfirmDelete.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record from the list to delete";
+        }
+    }
 }

@@ -18,7 +18,7 @@ namespace Testing4
         {
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
-            Int32 OrderId = 1;
+            Int32 OrderId = 7;
             Found = AnOrder.Find(OrderId);
             Assert.IsTrue(Found);
         }
@@ -29,9 +29,9 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean Ok = true;
-            Int32 OrderId = 1;
+            Int32 OrderId = 7;
             Found = AnOrder.Find(OrderId);
-            if (AnOrder.Date != Convert.ToDateTime("12/12/2009"))
+            if (AnOrder.Date != Convert.ToDateTime("06/06/2024"))
             {
                 Ok = false;
             }
@@ -44,9 +44,9 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean Ok = true;
-            Int32 OrderId = 1;
+            Int32 OrderId = 7;
             Found = AnOrder.Find(OrderId);
-            if (AnOrder.OrderId != 1)
+            if (AnOrder.OrderId != 7)
             {
                 Ok = false;
             }
@@ -59,9 +59,9 @@ namespace Testing4
                 clsOrder AnOrder = new clsOrder();
                 Boolean Found = false;
                 Boolean Ok = true;
-                Int32 OrderId = 1;
+                Int32 OrderId = 7;
                 Found = AnOrder.Find(OrderId);
-                if (AnOrder.OrderName != "Shoes")
+                if (AnOrder.OrderName != "Lambo")
                 {
                     Ok = false;
                 }
@@ -74,7 +74,7 @@ namespace Testing4
                 clsOrder AnOrder = new clsOrder();
                 Boolean Found = false;
                 Boolean Ok = true;
-                Int32 OrderId = 1;
+                Int32 OrderId = 7;
                 Found = AnOrder.Find(OrderId);
                 if (AnOrder.OrderQuantity != 1)
                 {
@@ -88,9 +88,9 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             Boolean found = false;
             Boolean Ok = true;
-            Int32 OrderId = 1;
+            Int32 OrderId = 7;
             found = AnOrder.Find(OrderId);
-            if (AnOrder.Price != 40)
+            if (AnOrder.Price != 25600)
             {
                 Ok = false;
             }
@@ -102,9 +102,9 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             Boolean found = false;
             Boolean Ok = true;
-            Int32 OrderId = 1;
+            Int32 OrderId = 7;
             found = AnOrder.Find(OrderId);
-            if (AnOrder.PaymentMethod != "card")
+            if (AnOrder.PaymentMethod != "cash")
             {
                 Ok = false;
             }
@@ -116,7 +116,7 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             Boolean found = false;
             Boolean Ok = true;
-            Int32 OrderId = 1;
+            Int32 OrderId = 7;
             found = AnOrder.Find(OrderId);
             if (AnOrder.Status != true)
             {

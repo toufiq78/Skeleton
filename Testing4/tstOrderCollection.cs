@@ -125,6 +125,27 @@ namespace Testing4
             AllOrders.ThisOrder.Find(PrimaryKey);
             Assert.AreEqual(AllOrders.ThisOrder, TestItem);
         }
+        [TestMethod]
+        public void DeleteMethodOk()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrder TestItem = new clsOrder();
+            Int32 PrimaryKey = 0;
+            TestItem.Status = true;
+            TestItem.OrderId = 1;
+            TestItem.OrderName = "shoes";
+            TestItem.Price = 40;
+            TestItem.Date = DateTime.Now.Date;
+            TestItem.OrderQuantity = 1;
+            TestItem.PaymentMethod = "card";
+            AllOrders.ThisOrder = TestItem;
+            PrimaryKey = AllOrders.Add();
+            TestItem.OrderId = PrimaryKey;
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            AllOrders.Delete();
+            Boolean Found = AllOrders.ThisOrder.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+        }
     }
    
  
