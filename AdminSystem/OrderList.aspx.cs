@@ -8,8 +8,10 @@ using ClassLibrary;
 
 public partial class OrderList : System.Web.UI.Page
 {
+    Int32 OrderId;
     protected void Page_Load(object sender, EventArgs e)
     {
+        OrderId = Convert.ToInt32(Session["OrderId"]);
         if (IsPostBack == false)
         {
             DisplayOrders();
@@ -18,16 +20,33 @@ public partial class OrderList : System.Web.UI.Page
 
     void DisplayOrders()
     {
-        clsOrderCollection Orders = new clsOrderCollection();
-        lstOrderbox.DataSource = Orders.OrderList;
+
+        clsOrderCollection Order = new clsOrderCollection();
+        lstOrderbox.DataSource = Order.OrderList;
         lstOrderbox.DataValueField = "OrderId";
         lstOrderbox.DataTextField = "OrderName";
         lstOrderbox.DataBind();
+
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
         Session["OrderId"] = -1;
         Response.Redirect("OrderDataEntry.aspx");
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        
+        if (lstOrderbox.SelectedIndex != -1)
+        {
+            OrderId = Convert.ToInt32(lstOrderbox.SelectedValue);
+            Session["OrderId"] = OrderId;
+            Response.Redirect("OrderDataEntry.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record from the list to edit"; 
+        }
     }
 }

@@ -13,11 +13,17 @@ public partial class _1Viewer : System.Web.UI.Page
         clsOrder AnOrder = new clsOrder();
         AnOrder = (clsOrder)Session["AnOrder"];
         Response.Write(AnOrder.Price);
+        Response.Write("<br>");
         Response.Write(AnOrder.OrderId);
+        Response.Write("<br>");
         Response.Write(AnOrder.OrderName);
+        Response.Write("<br>");
         Response.Write(AnOrder.OrderQuantity);
+        Response.Write("<br>");
         Response.Write(AnOrder.Date);
+        Response.Write("<br>");
         Response.Write(AnOrder.PaymentMethod);
+        Response.Write("<br>");
         Response.Write(AnOrder.Status);
     }
 }

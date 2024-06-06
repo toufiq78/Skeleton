@@ -1,0 +1,17 @@
+lstOrderbox.DataSource = Order.OrderList;
+lstOrderbox.DataValueField = "OrderId";
+lstOrderbox.DataTextField = "OrderName";
+lstOrderbox.DataBind();
+
+
+
+
+
+Order.ThisOrder.Find(OrderId);
+txtOrderId.Text = Order.ThisOrder.OrderId.ToString();
+txtOrderName.Text = Order.ThisOrder.OrderName.ToString();
+txtPrice.Text = Order.ThisOrder.Price.ToString();
+txtDate.Text = Order.ThisOrder.Date.ToString();
+txtOrderQuantity.Text = Order.ThisOrder.OrderQuantity.ToString();
+txtPaymentMethod.Text = Order.ThisOrder.PaymentMethod.ToString();
+chkStatus.Checked = Order.ThisOrder.Status.ToString();

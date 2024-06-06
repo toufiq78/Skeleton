@@ -8,6 +8,7 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 OrderId;
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -27,6 +28,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnOrder.Valid(OrderName, Date, Price, OrderQuantity, PaymentMethod);
         if (Error == "")
         {
+            AnOrder.OrderId = Convert.ToInt32( OrderId); 
             AnOrder.OrderName = OrderName;
             AnOrder.Date = Convert.ToDateTime(Date);
             AnOrder.Price = Convert.ToInt32(Price);
@@ -34,8 +36,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnOrder.PaymentMethod = PaymentMethod;
             AnOrder.Status = chkStatus.Checked;
             clsOrderCollection OrderList = new clsOrderCollection();
-            OrderList.ThisOrder = AnOrder;
-            OrderList.Add();
+            if (Convert.ToInt32(OrderId) == -1)
+            {
+                OrderList.ThisOrder = AnOrder;
+                OrderList.Add();
+            }
+            else
+            {
+                OrderList.ThisOrder.Find(Convert.ToInt32(OrderId));
+                OrderList.ThisOrder = AnOrder;
+                OrderList.Update();
+            }
             Response.Redirect("OrderList.aspx");
         }
         else
@@ -64,5 +75,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
             chkStatus.Checked = AnOrder.Status;
 
         }
+    }
+    void DisplayOrder()
+    {
+        clsOrderCollection Order = new clsOrderCollection();
+        Order.ThisOrder.Find(OrderId);
+        txtOrderId.Text = Order.ThisOrder.OrderId.ToString();
+        txtOrderName.Text = Order.ThisOrder.OrderName.ToString();
+        txtPrice.Text = Order.ThisOrder.Price.ToString();
+        txtDate.Text = Order.ThisOrder.Date.ToString();
+        txtOrderQuantity.Text = Order.ThisOrder.OrderQuantity.ToString();
+        txtPaymentMethod.Text = Order.ThisOrder.PaymentMethod.ToString();
+        chkStatus.Checked = Order.ThisOrder.Status;
     }
 }

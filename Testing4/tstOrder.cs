@@ -131,7 +131,7 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             string Error = "";
             Error = AnOrder.Valid(OrderName, Date, Price, OrderQuantity, PaymentMethod);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void OrderNameMinLessOne()
@@ -149,7 +149,7 @@ namespace Testing4
             String Error = "";
             string OrderName = "a";
             Error = AnOrder.Valid(OrderName, Date, Price, OrderQuantity, PaymentMethod);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void OrderNameMinPlusOne()
@@ -158,7 +158,7 @@ namespace Testing4
             String Error = "";
             string OrderName = "aa";
             Error = AnOrder.Valid(OrderName, Date, Price, OrderQuantity, PaymentMethod);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void OrderNameMaxLessOne()
@@ -167,7 +167,7 @@ namespace Testing4
             String Error = "";
             string OrderName = "aaaaa";
             Error = AnOrder.Valid(OrderName, Date, Price, OrderQuantity, PaymentMethod);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void OrderNameMax()
@@ -176,7 +176,7 @@ namespace Testing4
             String Error = "";
             string OrderName = "aaaaaa";
             Error = AnOrder.Valid(OrderName, Date, Price, OrderQuantity, PaymentMethod);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void OrderNameMid()
@@ -185,7 +185,7 @@ namespace Testing4
             String Error = "";
             string OrderName = "aaa";
             Error = AnOrder.Valid(OrderName, Date, Price, OrderQuantity, PaymentMethod);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void OrderNameMaxPlusOne()
@@ -223,7 +223,7 @@ namespace Testing4
             String Error = "";
             string Price = "1";
             Error = AnOrder.Valid(OrderName, Date, Price, OrderQuantity, PaymentMethod);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void PriceMinPlusOne()
@@ -232,7 +232,7 @@ namespace Testing4
             String Error = "";
             string Price = "11";
             Error = AnOrder.Valid(OrderName, Date, Price, OrderQuantity, PaymentMethod);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void PriceMaxLessOne()
@@ -241,7 +241,7 @@ namespace Testing4
             String Error = "";
             string Price = "11111";
             Error = AnOrder.Valid(OrderName, Date, Price, OrderQuantity, PaymentMethod);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void PriceMax()
@@ -250,7 +250,7 @@ namespace Testing4
             String Error = "";
             string Price = "111111";
             Error = AnOrder.Valid(OrderName, Date, Price, OrderQuantity, PaymentMethod);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void PriceMid()
@@ -259,7 +259,7 @@ namespace Testing4
             String Error = "";
             string Price = "111";
             Error = AnOrder.Valid(OrderName, Date, Price, OrderQuantity, PaymentMethod);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void PriceMaxPlusOne()
@@ -297,7 +297,7 @@ namespace Testing4
             String Error = "";
             string OrderQuantity = "2";
             Error = AnOrder.Valid(OrderName, Date, Price, OrderQuantity, PaymentMethod);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void OrderQuantityMinPlusOne()
@@ -306,7 +306,7 @@ namespace Testing4
             String Error = "";
             string OrderQuantity = "22";
             Error = AnOrder.Valid(OrderName, Date, Price, OrderQuantity, PaymentMethod);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void OrderQuantityMaxLessOne()
@@ -315,7 +315,7 @@ namespace Testing4
             String Error = "";
             string OrderQuantity = "22222";
             Error = AnOrder.Valid(OrderName, Date, Price, OrderQuantity, PaymentMethod);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void OrderQuantityMax()
@@ -324,7 +324,7 @@ namespace Testing4
             String Error = "";
             string OrderQuantity = "222222";
             Error = AnOrder.Valid(OrderName, Date, Price, OrderQuantity, PaymentMethod);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void OrderQuantityMid()
@@ -333,7 +333,7 @@ namespace Testing4
             String Error = "";
             string OrderQuantity = "222";
             Error = AnOrder.Valid(OrderName, Date, Price, OrderQuantity, PaymentMethod);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void OrderQuantityMaxPlusOne()
@@ -370,7 +370,7 @@ namespace Testing4
             String Error = "";
             string PaymentMethod = "a";
             Error = AnOrder.Valid(OrderName, Date, Price, OrderQuantity, PaymentMethod);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void PaymentMethodMinPlusOne()
@@ -379,7 +379,7 @@ namespace Testing4
             String Error = "";
             string PaymentMethod = "aa";
             Error = AnOrder.Valid(OrderName, Date, Price, OrderQuantity, PaymentMethod);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void PaymentMethodMaxLessOne()
@@ -388,7 +388,7 @@ namespace Testing4
             String Error = "";
             string PaymentMethod = "aaaaa";
             Error = AnOrder.Valid(OrderName, Date, Price, OrderQuantity, PaymentMethod);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void PaymentMethodMax()
@@ -397,7 +397,7 @@ namespace Testing4
             String Error = "";
             string PaymentMethod = "aaaaaa";
             Error = AnOrder.Valid(OrderName, Date, Price, OrderQuantity, PaymentMethod);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void PaymentMethodMid()
@@ -406,7 +406,7 @@ namespace Testing4
             String Error = "";
             string PaymentMethod = "aaa";
             Error = AnOrder.Valid(OrderName, Date, Price, OrderQuantity, PaymentMethod);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void PaymentMethodMaxPlusOne()
@@ -460,7 +460,7 @@ namespace Testing4
             TestDate = DateTime.Now.Date;
             string Date = TestDate.ToString();
             Error = AnOrder.Valid(OrderName, Date, Price, OrderQuantity, PaymentMethod);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void DateMinPlusOne()
