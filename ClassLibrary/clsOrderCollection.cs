@@ -6,42 +6,9 @@ namespace ClassLibrary
     {
         public clsOrderCollection()
         { 
-            Int32 Index = 0;
-            Int32 RecordCount = 0;
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblOrder_SelectAll");
-            RecordCount = DB.Count;
-            while (Index < RecordCount)
-            {
-                clsOrder AnOrder =new clsOrder();
-                AnOrder.Status = Convert.ToBoolean(DB.DataTable.Rows[Index]["Status"]);
-                AnOrder.OrderId = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderId"]);
-                AnOrder.OrderName = Convert.ToString(DB.DataTable.Rows[Index]["OrderName"]);
-                AnOrder.Price = Convert.ToInt32(DB.DataTable.Rows[Index]["Price"]);
-                AnOrder.Date = Convert.ToDateTime(DB.DataTable.Rows[Index]["Date"]);
-                AnOrder.OrderQuantity = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderQuantity"]);
-                AnOrder.PaymentMethod = Convert.ToString(DB.DataTable.Rows[Index]["PaymentMethod"]);
-                mOrderlist.Add( AnOrder );
-                Index++;
-            }
-            clsOrder TestItem = new clsOrder();
-            TestItem.Status = true;
-            TestItem.OrderId = 1;
-            TestItem.OrderName = "Shoes";
-            TestItem.Price = 40;
-            TestItem.Date = DateTime.Now.Date;
-            TestItem.OrderQuantity = 1;
-            TestItem.PaymentMethod = "card";
-            mOrderlist.Add(TestItem);
-            TestItem = new clsOrder();
-            TestItem.Status = false;
-            TestItem.OrderId = 2;
-            TestItem.OrderName = "pant";
-            TestItem.Price = 26;
-            TestItem.Date = DateTime.Now.Date;
-            TestItem.OrderQuantity = 3;
-            TestItem.PaymentMethod = "cash";
-            mOrderlist.Add(TestItem);
+            PopulateArray(DB);
         }
 
         private void Execute(string v)
@@ -113,6 +80,33 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@OrderId", mThisOrder.OrderId);
             DB.Execute("sproc_tblOrder_Delete");
+        }
+        public void ReportByOrderName(string orderName)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderName", orderName);
+            DB.Execute("sproc_tblOrder_FilterByOrderName");
+            PopulateArray(DB);
+        }
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
+            RecordCount = DB.Count;
+            mOrderlist = new List<clsOrder>();
+            while (Index<RecordCount)
+            {
+                clsOrder AnOrder = new clsOrder();
+                AnOrder.Status = Convert.ToBoolean(DB.DataTable.Rows[Index]["Status"]);
+                AnOrder.OrderId = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderId"]);
+                AnOrder.OrderName = Convert.ToString(DB.DataTable.Rows[Index]["OrderName"]);
+                AnOrder.Price = Convert.ToInt32(DB.DataTable.Rows[Index]["Price"]);
+                AnOrder.Date = Convert.ToDateTime(DB.DataTable.Rows[Index]["Date"]);
+                AnOrder.OrderQuantity = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderQuantity"]);
+                AnOrder.PaymentMethod = Convert.ToString(DB.DataTable.Rows[Index]["PaymentMethod"]);
+                mOrderlist.Add(AnOrder);
+                Index++;
+            }
         }
     }
 }

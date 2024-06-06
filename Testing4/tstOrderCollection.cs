@@ -146,6 +146,44 @@ namespace Testing4
             Boolean Found = AllOrders.ThisOrder.Find(PrimaryKey);
             Assert.IsFalse(Found);
         }
+        [TestMethod]
+        public void ReportByOrderNameMethodOk()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            FilteredOrders.ReportByOrderName("");
+            Assert.AreEqual(AllOrders.Count, FilteredOrders.Count);
+        }
+        [TestMethod]
+        public void ReportByOrderNameNoneFound()
+        {
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            FilteredOrders.ReportByOrderName("xxx xxx");
+            Assert.AreEqual(0, FilteredOrders.Count);
+        }
+        [TestMethod]
+        public void ReportByOrderNameTestDataFound()
+        {
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            Boolean Ok = true;
+            FilteredOrders.ReportByOrderName("yyy yyy");
+            if (FilteredOrders.Count == 2)
+            {
+                if (FilteredOrders.OrderList[0].OrderId != 25)
+                {
+                    Ok = false;
+                }
+                if (FilteredOrders.OrderList[1].OrderId != 26)
+                {
+                    Ok = false;
+                }
+            }
+            else
+            {
+                Ok = false;
+            }
+            Assert.IsTrue(Ok);
+        }
     }
    
  
